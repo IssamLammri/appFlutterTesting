@@ -14,6 +14,15 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Issam LAMMRI'),
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 10.0), // Ajoutez l'espace souhaité à gauche
+            child: SvgPicture.asset(
+              "assets/images/logo.svg",
+              color: Colors.white,
+              width: 30,
+              height: 30,
+            ),
+          ),
         ),
         body: Center(
           child: Column(
