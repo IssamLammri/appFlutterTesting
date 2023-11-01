@@ -39,20 +39,7 @@ class _ProjectsPageDynamicState extends State<ProjectsPageDynamic> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Projects Professional'),
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 10.0), // Ajoutez l'espace souhaité à gauche
-          child: SvgPicture.asset(
-            "assets/images/logo.svg",
-            color: Colors.white,
-            width: 30,
-            height: 30,
-          ),
-        ),
-      ),
-      body: Center(
+    return Center(
         child: ListView.builder(
           itemCount: projects.length,
           itemBuilder: (context, index) {
@@ -68,7 +55,6 @@ class _ProjectsPageDynamicState extends State<ProjectsPageDynamic> {
             );
           },
         )
-      ),
     );
   }
 }
