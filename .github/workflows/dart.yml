@@ -11,7 +11,7 @@ on:
       - master
 
 jobs:
-  build:
+  analyze_and_codestyle:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,18 +31,10 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Run tests
-        run: flutter test
+      - name: Analyze code
+        run: flutter analyze
 
-      - name: Build APK
-        run: flutter build apk
+      - name: Codestyle check
+        run: flutter format -n --set-exit-if-changed .
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+# Pas besoin de la section "deploy" car elle a été supprimée
