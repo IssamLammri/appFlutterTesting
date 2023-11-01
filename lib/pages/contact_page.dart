@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:date_field/date_field.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({super.key});
@@ -16,6 +17,9 @@ class _ContactPageState extends State<ContactPage> {
   final phoneController = TextEditingController();
   final emailController = TextEditingController();
   final messageController = TextEditingController();
+
+  final selectedCompany = <String, dynamic>{}; // <String, dynamic>{};
+  DateTime selectedDate = DateTime.now();
 
   @override
   void dispose() {
@@ -53,8 +57,6 @@ class _ContactPageState extends State<ContactPage> {
       'experience': 'Full Stack Developer'
     }
   ];
-
-  final selectedCompany = <String, dynamic>{}; // <String, dynamic>{};
 
   @override
   Widget build(BuildContext context) {
@@ -169,6 +171,28 @@ class _ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 Container(
+                  margin: const EdgeInsets.only(bottom: 10.0),
+                  child: DateTimeFormField(
+                    decoration: const InputDecoration(
+                      hintStyle: TextStyle(color: Colors.black45),
+                      errorStyle: TextStyle(color: Colors.redAccent),
+                      border: OutlineInputBorder(),
+                      suffixIcon: Icon(Icons.event_note),
+                      labelText: 'Only time',
+                      icon: Icon(Icons.event_note),
+                      hintText: 'Where can we reach you?',
+                    ),
+                    mode: DateTimeFieldPickerMode.dateAndTime,
+                    autovalidateMode: AutovalidateMode.always,
+                    validator: (e) => (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
+                    onDateSelected: (DateTime value) {
+                      setState(() {
+                        selectedDate = value;
+                      });
+                    },
+                  ),
+                ),
+                Container(
                   margin: const EdgeInsets.only(bottom: 20.0),
                   child: TextFormField(
                     decoration: const InputDecoration(
@@ -199,12 +223,14 @@ class _ContactPageState extends State<ContactPage> {
                           final email = emailController.text;
                           final message = messageController.text;
                           final company = selectedCompany['companyName'];
+                          final date = selectedDate;
 
                           print('Name: $name');
                           print('Phone: $phone');
                           print('Email: $email');
                           print('Message: $message');
                           print('Company: $company');
+                          print('Date: $date');
 
 
                       //   // If the form is valid, display a snackbar. In the real world,
