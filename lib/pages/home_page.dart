@@ -1,7 +1,5 @@
-import 'package:firstprojetflutter/pages/project_page.dart';
-import 'package:firstprojetflutter/pages/project_page_dynamic.dart';
+import 'package:firstprojetflutter/pages/contact_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -58,10 +56,10 @@ class HomePage extends StatelessWidget {
               Navigator.push(
                 context,
                 // MaterialPageRoute(builder: (context) => const EventsPage()),
-                PageRouteBuilder(pageBuilder: (_, __, ___) => const ProjectsPage()),
+                PageRouteBuilder(pageBuilder: (_, __, ___) => const ContactPage()),
               );
             },
-            label: const Text("Show Projects",
+            label: const Text("Contact me",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.normal,
@@ -69,31 +67,9 @@ class HomePage extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            icon: const Icon(Icons.account_balance_wallet_outlined, size: 30),
+            icon: const Icon(Icons.contact_mail, size: 30),
           ),
           Padding(padding: EdgeInsets.only(top: 50)),
-          ElevatedButton.icon(
-            style: ButtonStyle(
-              padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(25)),
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                // MaterialPageRoute(builder: (context) => const EventsPage()),
-                PageRouteBuilder(pageBuilder: (_, __, ___) => const ProjectsPageDynamic()),
-              );
-            },
-            label: const Text("Show Projects Dynamic",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.normal,
-                color: Colors.white,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            icon: const Icon(Icons.account_balance_wallet_outlined, size: 30),
-          ),
         ],
       ),
     );

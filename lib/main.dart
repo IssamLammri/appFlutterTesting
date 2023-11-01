@@ -33,8 +33,7 @@ class _MyAppState extends State<MyApp> {
             title: [
               const Text('Profile'),
               const Text('Projects'),
-              const Text('Education'),
-              const Text('Contact')
+              const Text('Education')
             ][_currentIndexPage],
             leading: Padding(
               padding: const EdgeInsets.only(left: 10.0), // Ajoutez l'espace souhaité à gauche
@@ -49,8 +48,7 @@ class _MyAppState extends State<MyApp> {
           body: [
             const HomePage(),
             const ProjectsPageDynamic(),
-            const ProjectsPage(),
-            const HomePage()
+            const ProjectsPage()
           ][_currentIndexPage],
           bottomNavigationBar: BottomNavigationBar(
             items:const [
